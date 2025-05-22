@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshCheck - Ensuring Safe and Healthy Eating</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #66BB6A, #4CAF50);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: #FF6B35;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #E55A2B;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2E7D32;
+        }
+
+        .problem-section {
+            background: #f8f9fa;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            background: #FF6B35;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4CAF50, #66BB6A);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Target Audience */
+        .audience-section {
+            background: #f8f9fa;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .audience-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        /* Technology Section */
+        .tech-steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tech-step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        /* Competitive Advantage */
+        .advantage-section {
+            background: #f8f9fa;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .existing-solutions, .freshcheck-advantage {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .freshcheck-advantage {
+            border-left: 5px solid #4CAF50;
+        }
+
+        .solution-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .advantage-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #E8F5E8;
+            border-radius: 5px;
+            border-left: 3px solid #4CAF50;
+        }
+
+        /* Monetization */
+        .monetization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .monetization-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid #4CAF50;
+        }
+
+        /* Roadmap */
+        .roadmap-section {
+            background: #f8f9fa;
+        }
+
+        .roadmap-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .phase {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            position: relative;
+        }
+
+        .phase-number {
+            width: 80px;
+            height: 80px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .phase-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #2E7D32;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-cta {
+            margin-top: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-timeline {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">🥬 FreshCheck</div>
+            <ul class="nav-links">
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>FreshCheck</h1>
+            <p>Ensuring Safe and Healthy Eating with Smart Food Scanning Technology</p>
+            <a href="#contact" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="section problem-section">
+        <div class="container">
+            <h2 class="section-title">The Problem with Fresh Food</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⚠️</div>
+                    <h3>Harmful Chemicals</h3>
+                    <p>Fruits, vegetables, and other fresh foods often contain harmful chemicals used to enhance freshness or extend shelf life.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🔍</div>
+                    <h3>Hidden Dangers</h3>
+                    <p>These chemicals can cause severe health problems like toxicity, hormonal imbalance, and long-term diseases.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">❓</div>
+                    <h3>Lack of Transparency</h3>
+                    <p>Consumers have no easy way to identify whether the food they consume is safe or not.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="section">
+        <div class="container">
+            <h2 class="section-title">Introducing FreshCheck</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Scan Functionality</h3>
+                    <p>Use your phone to scan food items for chemical levels with advanced AI technology.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏥</div>
+                    <h3>Health Assessment</h3>
+                    <p>Receive personalized recommendations based on your health data and dietary needs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-Time Results</h3>
+                    <p>Get instant feedback on food safety and chemical percentages within seconds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section class="section audience-section">
+        <div class="container">
+            <h2 class="section-title">Who We Serve</h2>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <h3>Health-Conscious Individuals</h3>
+                    <p>Families, fitness enthusiasts, and organic food lovers seeking safer food choices.</p>
+                </div>
+                <div class="audience-card">
+                    <h3>Patients with Medical Conditions</h3>
+                    <p>Those sensitive to chemical exposure who need extra protection.</p>
+                </div>
+                <div class="audience-card">
+                    <h3>Retail Shoppers</h3>
+                    <p>People seeking safe and fresh produce during their grocery shopping.</p>
+                </div>
+                <div class="audience-card">
+                    <h3>General Public</h3>
+                    <p>Anyone looking to ensure food safety for themselves and their families.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="section">
+        <div class="container">
+            <h2 class="section-title">Technology Behind FreshCheck</h2>
+            <div class="tech-steps">
+                <div class="tech-step">
+                    <div class="step-number">1</div>
+                    <h3>AI & Computer Vision</h3>
+                    <p>Analyze visual and spectral data from your smartphone camera using advanced algorithms.</p>
+                </div>
+                <div class="tech-step">
+                    <div class="step-number">2</div>
+                    <h3>Machine Learning</h3>
+                    <p>Provide personalized recommendations based on user data and consumption patterns.</p>
+                </div>
+                <div class="tech-step">
+                    <div class="step-number">3</div>
+                    <h3>Health Database</h3>
+                    <p>Integrated food safety standards and comprehensive health risk data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Advantage -->
+    <section class="section advantage-section">
+        <div class="container">
+            <h2 class="section-title">Our Competitive Advantage</h2>
+            <div class="comparison">
+                <div class="existing-solutions">
+                    <h3>Existing Solutions</h3>
+                    <div class="solution-item">
+                        <strong>Clarifruit:</strong> B2B focus on ripeness and quality only
+                    </div>
+                    <div class="solution-item">
+                        <strong>Greentest/Pestiscand:</strong> Require expensive external hardware
+                    </div>
+                    <div class="solution-item">
+                        <strong>Yuka:</strong> Limited to processed foods, not fresh produce
+                    </div>
+                </div>
+                <div class="freshcheck-advantage">
+                    <h3>FreshCheck Stands Out</h3>
+                    <div class="advantage-item">
+                        Fully app-based, no external hardware needed
+                    </div>
+                    <div class="advantage-item">
+                        Combines chemical detection and personalized health insights
+                    </div>
+                    <div class="advantage-item">
+                        Affordable and accessible to everyone
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monetization -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Monetization Strategy</h2>
+            <div class="monetization-grid">
+                <div class="monetization-card">
+                    <h3>🆓 Freemium Model</h3>
+                    <p>Free version with basic features, premium version with advanced analytics and detailed reports.</p>
+                </div>
+                <div class="monetization-card">
+                    <h3>🤝 Partnerships</h3>
+                    <p>Collaborate with organic food brands and retailers for mutual promotion.</p>
+                </div>
+                <div class="monetization-card">
+                    <h3>📢 Advertisements</h3>
+                    <p>Display targeted ads for health-related products and services.</p>
+                </div>
+                <div class="monetization-card">
+                    <h3>💎 Subscription Plans</h3>
+                    <p>Monthly and yearly plans for enhanced services and premium features.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="section roadmap-section">
+        <div class="container">
+            <h2 class="section-title">Roadmap to Success</h2>
+            <div class="roadmap-timeline">
+                <div class="phase">
+                    <div class="phase-number">1</div>
+                    <div class="phase-content">
+                        <h3>Research & Prototype</h3>
+                        <p>Validate technical feasibility and collaborate with food safety experts to build the foundation.</p>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-number">2</div>
+                    <div class="phase-content">
+                        <h3>MVP Development</h3>
+                        <p>Develop basic app features and test with a small user group for feedback and improvements.</p>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-number">3</div>
+                    <div class="phase-content">
+                        <h3>Launch & Scale</h3>
+                        <p>Launch on app stores, add advanced features, and expand user base through marketing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer/Contact -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h2>Join Us on This Journey</h2>
+                <p>Make food safer and healthier for everyone. Contact us to learn more about partnering or investing in FreshCheck.</p>
+                <div class="footer-cta">
+                    <a href="mailto:info@freshcheck.com" class="cta-button">Contact Us Today</a>
+                </div>
+                <p style="margin-top: 2rem; opacity: 0.8;">Let's build a brighter, healthier future together.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(46, 125, 50, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
+            }
+        });
+    </script>
+</body>
+</html>
